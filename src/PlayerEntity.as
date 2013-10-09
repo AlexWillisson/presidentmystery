@@ -16,16 +16,16 @@ package
 		//protected const GRAVITY:int = 4;
 		//protected const DRAG:int = -60;
 		//protected const PLAYER_JUMP:int = 150;
-		//protected var a:Point;
-		//protected var v:Point;
+		protected var a:Point;
+		protected var v:Point;
 		
 		[Embed(source="../assets/images/player.png")] private const PLAYER:Class;
 		
 		public function PlayerEntity() 
 		{
 			graphic = new Image(PLAYER);
-			//a = new Point();
-			//v = new Point();
+			a = new Point();
+			v = new Point();
 			setHitbox(27,35);
 		}
 
@@ -40,7 +40,7 @@ package
 					a.x = DRAG;
 					if ((v.x + a.x) < 0) { v.x = 0 } ;
 				}
-				if (v.x > 0) {
+				if (v.x < 0) {
 					a.x = -DRAG;
 				if ((v.x + a.x) > 0) {v.x = 0 } ;
 				}
