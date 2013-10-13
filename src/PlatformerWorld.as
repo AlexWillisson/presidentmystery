@@ -1,26 +1,29 @@
 package  
 {
 	import net.flashpunk.World;
+	
 	public class PlatformerWorld extends World 
 	{
 		
-		public function PlatformerWorld() 
+		public function PlatformerWorld(mapData:Array) 
 		{
 			add(new PlayerEntity());
-            for (var i:int=0; i<20; i++) {
-                add(new WallEntity(i,0));
-                add(new WallEntity(i,14));
-            }
-            for (i=0; i<14; i++) {
-                add(new WallEntity(0,i));
-                add(new WallEntity(19,i));
-            }
-            for (i=1; i<5; i++) {
-                add(new WallEntity(5-i,14-i));
-                add(new WallEntity(8+i,5+i));
-                add(new WallEntity(2+i,10-i));
-                add(new WallEntity(13+i,8-i));
-            }
+			
+			//It is given mapdata, and for every row and column it goes through and creates a Wall Entity.
+			// 1 is a placeholder for "there is actually a tile here, yes.
+			// It is an artifact of using the metroid tileset, and when we make our own we can set it to 0.
+			//mapData[5] refers to new_layerdata, from Main.as. This stores what every room actually is--wall or what.
+			//mapData[0] refers to map_width.
+			//mapData[1] refers to map_height.
+			//if you know how to set global constants, please let me know and I can update this to use the constants
+			//		rather than explaining it in comments.
+			for ( var i:int = 0; i < mapData[1]; i ++) {
+				for ( var j:int = 0; j < mapData[0]; j ++) {
+					if (mapData[5][i][j] > 1) {
+						add(new WallEntity(j, i));
+					}
+				}
+			}
 		}
 		
 	}
