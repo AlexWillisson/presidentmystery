@@ -28,7 +28,6 @@ package
 			//		causing the loading of different map files rather than always loading test.txt.
 			function onLoaded(e:Event):void {
 				var i:int;
-				var j:int;
 
 				var mapdata:String = e.target.data;
 				var split_mapdata:Array = mapdata.split("[");
@@ -57,7 +56,7 @@ package
 				var new_layerdata:Array = [];
 				for (i = 0; i < map_height; i++) {
 					new_layerdata[i] = [];
-					for (j = 0; j < map_width; j ++) {
+					for (var j:int = 0; j < map_width; j ++) {
 						new_layerdata[i][j] = layer_data[50 * i + j];
 					}
 				}

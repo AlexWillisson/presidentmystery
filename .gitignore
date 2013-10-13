@@ -12,3 +12,5 @@ bin-release/
 
 obj/PresidentMysteryConfig.old
 obj/PresidentMysteryConfig.xml
+
+*~
