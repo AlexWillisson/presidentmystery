@@ -6,12 +6,9 @@ package
 
 	public class PlatformerWorld extends World 
 	{
-		private const READ:uint = 0xffffff;
-		private const UNREAD:uint = 0xf7941e;
-
 		private var phone:Phone;
 		private var phoneOpen:Boolean;
-		private var msg0:Message, msg1:Message, msg2:Message, msg3:Message, msg4:Message, msg5:Message, msg6:Message, msg7:Message, msg8:Message, msg9:Message, title:Message;
+		private var msg0:Message, msg1:Message, msg2:Message, msg3:Message, msg4:Message, title:TextEntity;
 
 		public function PlatformerWorld(mapData:Array) 
 		{
@@ -35,22 +32,7 @@ package
 			}
 
 			phone = new Phone();
-			title = new Message(290, 120, "Messages", 36, READ);
-
-			msg0 = new Message(300, 170, "VP", 22, UNREAD);
-			msg1 = new Message(455, 175, "8:38p", 12, UNREAD);
-
-			msg2 = new Message(300, 200, "Speaker", 22, READ);
-			msg3 = new Message(455, 205, "4:32p", 12, READ);
-
-			msg4 = new Message(300, 230, "Mayor", 22, READ);
-			msg5 = new Message(455, 235, "2:33p", 12, READ);
-
-			msg6 = new Message(300, 260, "Police", 22, READ);
-			msg7 = new Message(455, 265, "Tues", 12, READ);
-
-			msg8 = new Message(300, 290, "Doctor", 22, READ);
-			msg9 = new Message(455, 295, "Tues", 12, READ);
+			title = new TextEntity(290, 120, "Inbox", 36, 0xffffff);
 
 			phoneOpen = false;
 		}
@@ -71,16 +53,21 @@ package
 		private function openPhone():void
 		{
 			add(phone);
-			add(msg0);
-			add(msg1);
-			add(msg2);
-			add(msg3);
-			add(msg4);
-			add(msg5);
-			add(msg6);
-			add(msg7);
-			add(msg8);
-			add(msg9);
+			// add(msg0);
+			// add(msg1);
+			// add(msg2);
+			// add(msg3);
+			// add(msg4);
+			// add(msg5);
+			// add(msg6);
+			// add(msg7);
+			// add(msg8);
+			// add(msg9);
+			// add(btn0);
+			// add(btn1);
+			// add(btn2);
+			// add(btn3);
+			// add(btn4);
 			add(title);
 			phoneOpen = true;
 		}
@@ -88,18 +75,24 @@ package
 		private function closePhone():void
 		{
 			remove(phone);
-			remove(msg0);
-			remove(msg1);
-			remove(msg2);
-			remove(msg3);
-			remove(msg4);
-			remove(msg5);
-			remove(msg6);
-			remove(msg7);
-			remove(msg8);
-			remove(msg9);
+			// remove(msg0);
+			// remove(msg1);
+			// remove(msg2);
+			// remove(msg3);
+			// remove(msg4);
+			// remove(msg5);
+			// remove(msg6);
+			// remove(msg7);
+			// remove(msg8);
+			// remove(msg9);
+			// remove(btn0);
+			// remove(btn1);
+			// remove(btn2);
+			// remove(btn3);
+			// remove(btn4);
 			remove(title);
 			phoneOpen = false;
 		}
+
 	}
 }

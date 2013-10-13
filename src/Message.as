@@ -6,18 +6,36 @@ package
 	public class Message extends Entity {
 		[Embed(source = "../assets/fonts/Ubuntu-B.ttf", embedAsCFF="false", fontFamily = "UbuntuB")] private const UbuntuB:Class;
 
-		public function Message(posX:int, posY:int, text:String, textSize:int,
-			textColor:uint)
+		private var sender:TextEntity, time:TextEntity, btn:Button;
+
+		public function Message(posX:int, posY:int, senderName:String,
+			timestamp:String, textColor:uint)
 		{
 			Text.font = "UbuntuB";
 
-			graphic = new Text(text, posX, posY,
-				{size: textSize, color: textColor});
+			sender = new TextEntity(posX, posY, senderName, 22, textColor);
+			time = new TextEntity(posX + 155, posY + 5, timestamp,
+				12, textColor);
+			btn = new Button(pressed, posX - 10, posY, 205, 30);
 		}
 
-		override public function update():void
+		private function pressed():void
 		{
-			super.update();
+			trace ("foo");
+		}
+
+		override public function added():void
+		{
+			world.add(sender);
+			world.add(time);
+			world.add(btn);
+		}
+
+		override public function removed():void
+		{
+			world.remove(sender);
+			world.remove(time);
+			world.remove(btn);
 		}
 	}
 }
