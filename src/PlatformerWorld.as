@@ -20,8 +20,9 @@ package
 			for ( var i:int = 0; i < mapData[1]; i ++) {
 				for ( var j:int = 0; j < mapData[0]; j ++) {
 					if (mapData[5][i][j] > 1) {
-						add(new WallEntity(j, i));
+						add(new WallEntity(j, i, mapData[5][i][j]));
 					}
+					
 				}
 			}
 		}

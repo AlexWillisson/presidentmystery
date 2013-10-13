@@ -38,6 +38,8 @@ package
 
 		override public function update():void
 		{
+			var i:int;
+
 			// Checking player input.
 			if(Input.check(Key.LEFT)) {accel.x = -PLAYER_HACCEL;} // MOVE LEFT
 			else if (Input.check(Key.RIGHT)) { accel.x = PLAYER_HACCEL; } // MOVE RIGHT
@@ -71,7 +73,7 @@ package
 			// For every bit of x velocity, make sure that moving there won't cause the player to clip.
 			//	If it doesn't, go ahead and set the player's x to that.
 			//	If it does, set player velocity to 0 so they stop trying to clip.
-            for (var i:int=0; i<Math.abs(vel.x); i++) {
+            for (i = 0; i<Math.abs(vel.x); i++) {
                 if (! collide("wall",x+FP.sign(vel.x),y)) {
                     x += FP.sign(vel.x);
                 } else {
@@ -81,7 +83,7 @@ package
             }
             
 			// Same as above.
-			for (var i:int=0; i<Math.abs(vel.y); i++) {
+			for (i = 0; i<Math.abs(vel.y); i++) {
                 if (! collide("wall",x,y+FP.sign(vel.y))) {
                     y += FP.sign(vel.y);
                 } else {

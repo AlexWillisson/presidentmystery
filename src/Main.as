@@ -27,6 +27,9 @@ package
 			//This may be more useful later. When we implement phone menu, we can start testing certain buttons
 			//		causing the loading of different map files rather than always loading test.txt.
 			function onLoaded(e:Event):void {
+				var i:int;
+				var j:int;
+
 				var mapdata:String = e.target.data;
 				var split_mapdata:Array = mapdata.split("[");
 				var header_mapdata:String = split_mapdata[1].split("]")[1];
@@ -45,16 +48,16 @@ package
 				
 				var split_layer:Array = layer_mapdata.split("=");
 				var layer_data:Array = split_layer[2].split(",");
-				for (var i:int = 0; i < map_height * map_width - 1; i++) {
+				for (i = 0; i < map_height * map_width - 1; i++) {
 					layer_data[i] = layer_data[i].replace(/[\u000d\u000a\u0008\u0020]+/g, "");
 					//Getting rid of newlines.
 				}
 				
 				//Splits layer_data into a two-dimensional array, for ease of use.
 				var new_layerdata:Array = [];
-				for (var i:int = 0; i < map_height; i++) {
+				for (i = 0; i < map_height; i++) {
 					new_layerdata[i] = [];
-					for (var j:int = 0; j < map_width; j ++) {
+					for (j = 0; j < map_width; j ++) {
 						new_layerdata[i][j] = layer_data[50 * i + j];
 					}
 				}
