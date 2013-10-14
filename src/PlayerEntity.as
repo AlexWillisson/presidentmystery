@@ -25,7 +25,7 @@ package
 		
 		private var exit:Boolean = false;
 		
-		[Embed(source="../assets/images/player.png")] private const PLAYER_SPRITE:Class;
+		[Embed(source="assets/images/player.png")] private const PLAYER_SPRITE:Class;
 		
 		public function PlayerEntity() 
 		{

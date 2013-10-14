@@ -9,7 +9,7 @@ package
 		private const READ:uint = 0xffffff;
 		private const UNREAD:uint = 0xf7941e;
 
-		[Embed(source = "../assets/images/phoneWithText.png")] private const phoneBg:Class;
+		[Embed(source = "assets/images/phoneWithText.png")] private const phoneBg:Class;
 		private var personName:TextEntity, text:TextEntity;
 		private var phone:Phone;
 		private var _next:Entity;

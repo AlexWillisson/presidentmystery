@@ -4,7 +4,7 @@ package
 	import net.flashpunk.graphics.Text;
 
 	public class Message extends Entity {
-		[Embed(source = "../assets/fonts/Ubuntu-B.ttf", embedAsCFF="false", fontFamily = "UbuntuB")] private const UbuntuB:Class;
+		[Embed(source = "assets/fonts/Ubuntu-B.ttf", embedAsCFF="false", fontFamily = "UbuntuB")] private const UbuntuB:Class;
 
 		private var sender:TextEntity, time:TextEntity, btn:Button;
 
