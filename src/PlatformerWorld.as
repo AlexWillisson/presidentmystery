@@ -7,23 +7,25 @@ package
 	public class PlatformerWorld extends World 
 	{
 		private var phone:Phone;
-		private var level1:Level;
+		private var levels:Array;
 		private var splash:Splash;
 		private var intro:Intro;
 
 		public function PlatformerWorld(mapData:Array) 
 		{
-			phone = new Phone();
-			level1 = new Level(mapData);
+			levels = new Array();
+			levels[0] = new Level(mapData);
 			splash = new Splash();
 			intro = new Intro(loadPhone);
 
-			// welcome();
+			phone = new Phone(levels);
 
-			startGame();
+			// add(splash);
 
-			// startLevel();
-			// openPhone();
+			add(intro);
+
+			// add(level1);
+			// add(phone);
 		}
 		
 		private function loadPhone():void
@@ -35,46 +37,16 @@ package
 		override public function update():void
 		{
 			if (Input.released(Key.M)) {
-				if (level1.world) {
-					endLevel();
-					openPhone();
+				if (levels[0].world) {
+					remove(levels[0]);
+					add(phone);
 				} else {
-					closePhone();
-					startLevel();
+					remove(phone);
+					add(levels[0]);
 				}
 			}
 
 			super.update()
-		}
-
-		private function startGame():void
-		{
-			add(intro);
-		}
-
-		private function welcome():void
-		{
-			add(splash);
-		}
-
-		private function openPhone():void
-		{
-			add(phone);
-		}
-
-		private function closePhone():void
-		{
-			remove(phone);
-		}
-
-		private function startLevel():void
-		{
-			add(level1);
-		}
-
-		private function endLevel():void
-		{
-			remove(level1)
 		}
 	}
 }

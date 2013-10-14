@@ -9,14 +9,14 @@ package
 		[Embed(source = "../assets/images/blank.png")] private const bg:Class;
 
 		private var text:TextEntity, ctrls:TextEntity;
-		private var phone:Phone;
+		private var _next:Entity;
 
-		public function Theory(parent:Phone) {
+		public function Theory(next:Entity) {
 			graphic = new Image(bg)
 			x = 0;
 			y = 0;
 
-			phone = parent;
+			_next = next;
 			text = new TextEntity(270, 150, "So much for that theory.", 22, 0xffffff);
 
 			ctrls = new TextEntity(300, 400, "Press space to continue", 18, 0xffffff);
@@ -25,7 +25,7 @@ package
 		override public function update():void
 		{
 			if (Input.released(Key.SPACE)) {
-				world.add(phone);
+				world.add(_next);
 				world.remove(this);
 			}
 		}

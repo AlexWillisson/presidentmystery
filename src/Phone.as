@@ -8,17 +8,19 @@ package
 		private const UNREAD:uint = 0xf7941e;
 
 		[Embed(source = "../assets/images/phone.png")] private const phone:Class;
-		private var texts:Array;
+		private var texts:Array, levels:Array;
 		private var inboxTitle:TextEntity;
 		private var msg0:PhoneMessage, msg1:PhoneMessage;
 		private var wikiSplash:WikiSplash;
 		private var wiki:WikiPage;
 		private var theory:Theory;
 
-		public function Phone() {
+		public function Phone(maps:Array) {
 			graphic = new Image(phone)
 			x = 0;
 			y = 0;
+
+			levels = maps;
 
 			texts = new Array();
 			texts[0] = new Message(300, 170, "???", "Now", UNREAD, txt0);
@@ -28,12 +30,18 @@ package
 
 			inboxTitle = new TextEntity(290, 120, "Inbox", 36, 0xffffff);
 
-			theory = new Theory(this);
+			theory = new Theory(levels[0]);
 			wiki = new WikiPage(theory);
 			wikiSplash = new WikiSplash(wiki);
 
 			msg0 = new PhoneMessage(this, "???", "It's been a while. If I'm\nright, you're in the\nhospital right now.\nYou need to leave.\n\nNow.", this);
 			msg1 = new PhoneMessage(this, "???", "And yes, you were the\nPresident. We need\nto talk -- in person.", wikiSplash);
+		}
+
+		private function level0():void
+		{
+			world.add(levels[0]);
+			world.remove(this);
 		}
 
 		private function txt0():void
@@ -54,7 +62,8 @@ package
 		private function txt1():void
 		{
 			world.add(msg1);
-			texts[1] = (new Message(300, 200, "???", "10:34a", READ, txt1r));
+			world.remove(texts[1])
+			texts[1] = new Message(300, 200, "???", "10:34a", READ, txt1r);
 			world.remove(this);
 		}
 
