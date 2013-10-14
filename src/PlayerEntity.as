@@ -23,6 +23,8 @@ package
 		protected var accel:Point; //Acceleration
 		protected var vel:Point; //Velocity
 		
+		private var exit:Boolean = false;
+		
 		[Embed(source="../assets/images/player.png")] private const PLAYER_SPRITE:Class;
 		
 		public function PlayerEntity() 
@@ -42,7 +44,17 @@ package
 
 			// Checking player input.
 			if(Input.check(Key.LEFT) || Input.check(Key.A)) {accel.x = -PLAYER_HACCEL;} // MOVE LEFT
-			else if (Input.check(Key.RIGHT) || Input.check(Key.D)) { accel.x = PLAYER_HACCEL; } // MOVE RIGHT
+			else if (Input.check(Key.RIGHT) || Input.check(Key.D)) {
+				accel.x = PLAYER_HACCEL; // MOVE RIGHT
+				if (x >= 800 && !exit) {
+					exit = true;
+					if (y < 300) {
+						trace("PLAYER TOOK DIFFICULT PATH");
+					} else {
+						trace("PLAYER TOOK EASY PATH");
+					}
+				}
+			}
 			else {	// IF THEY ARE NOT MOVING LEFT OR RIGHT, FACTOR IN DRAG.
 				if(vel.x > 0) { //If the velocity is greater than zero, set the acceleration to drag.
 					accel.x = DRAG;	//		Then, if this ends up with a negative/zero velocity, set it to zero so we don't
