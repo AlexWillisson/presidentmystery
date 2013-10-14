@@ -1,14 +1,19 @@
 package
 {
 	import net.flashpunk.Entity;
+	import net.flashpunk.graphics.Image;
 
 	public class Level extends Entity {
 		private var player:PlayerEntity;
 		private var walls:Array;
 
+		[Embed(source = "../assets/images/hospitalBg.png")] private const bg:Class;
+
 		public function Level(mapData:Array)
 		{
 			var newWall:WallEntity;
+
+			graphic = new Image(bg);
 
 			player = new PlayerEntity();
 			walls = new Array();

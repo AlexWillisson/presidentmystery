@@ -33,9 +33,10 @@ package
 			graphic = new Image(PLAYER_SPRITE);
 			accel = new Point();
 			vel = new Point();
-			setHitbox(27, 35); //NOTE: THIS HAS TO BE UPDATED WITH THE SPRITE!!! THIS IS SET TO SAMUS!!
+			// setHitbox(27, 35);
+			setHitbox(9, 35);
 			x = 16; //The X and Y the player is created at. Made to be 16/16 so that samus doesn't clip with the
-			y = 16; //		walls upon spawning.
+			y = 540; //		walls upon spawning.
 		}
 
 		override public function update():void

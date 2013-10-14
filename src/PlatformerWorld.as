@@ -33,20 +33,5 @@ package
 			remove(intro);
 			add(phone);
 		}
-
-		override public function update():void
-		{
-			if (Input.released(Key.M)) {
-				if (levels[0].world) {
-					remove(levels[0]);
-					add(phone);
-				} else {
-					remove(phone);
-					add(levels[0]);
-				}
-			}
-
-			super.update()
-		}
 	}
 }
