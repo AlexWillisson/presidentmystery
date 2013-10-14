@@ -41,8 +41,8 @@ package
 			var i:int;
 
 			// Checking player input.
-			if(Input.check(Key.LEFT)) {accel.x = -PLAYER_HACCEL;} // MOVE LEFT
-			else if (Input.check(Key.RIGHT)) { accel.x = PLAYER_HACCEL; } // MOVE RIGHT
+			if(Input.check(Key.LEFT) || Input.check(Key.A)) {accel.x = -PLAYER_HACCEL;} // MOVE LEFT
+			else if (Input.check(Key.RIGHT) || Input.check(Key.D)) { accel.x = PLAYER_HACCEL; } // MOVE RIGHT
 			else {	// IF THEY ARE NOT MOVING LEFT OR RIGHT, FACTOR IN DRAG.
 				if(vel.x > 0) { //If the velocity is greater than zero, set the acceleration to drag.
 					accel.x = DRAG;	//		Then, if this ends up with a negative/zero velocity, set it to zero so we don't
@@ -63,7 +63,7 @@ package
 			//Are you hitting a wall? Yes? Ok, your velocity is now zero, and if you pressed jump, you can jump.
             if (collide("wall",x,y+1)) {
                 vel.y=0;
-                if (Input.pressed(Key.SPACE)) { accel.y = PLAYER_JUMP; }
+                if (Input.pressed(Key.SPACE) || Input.pressed(Key.UP) || Input.pressed(Key.W)) { accel.y = PLAYER_JUMP; }
 				else { accel.y = 0; }
 			//You're not hitting a wall? FALL!
             } else { accel.y=GRAVITY; }
