@@ -11,6 +11,9 @@ package
 		private var texts:Array;
 		private var inboxTitle:TextEntity;
 		private var msg0:PhoneMessage, msg1:PhoneMessage;
+		private var wikiSplash:WikiSplash;
+		private var wiki:WikiPage;
+		private var theory:Theory;
 
 		public function Phone() {
 			graphic = new Image(phone)
@@ -25,8 +28,12 @@ package
 
 			inboxTitle = new TextEntity(290, 120, "Inbox", 36, 0xffffff);
 
-			msg0 = new PhoneMessage(this, "???", "It's been a while. If I'm\nright, you're in the\nhospital right now.\nYou need to leave.\n\nNow.");
-			msg1 = new PhoneMessage(this, "???", "And yes, you were the\nPresident. We need\nto talk -- in person.");
+			theory = new Theory(this);
+			wiki = new WikiPage(theory);
+			wikiSplash = new WikiSplash(wiki);
+
+			msg0 = new PhoneMessage(this, "???", "It's been a while. If I'm\nright, you're in the\nhospital right now.\nYou need to leave.\n\nNow.", this);
+			msg1 = new PhoneMessage(this, "???", "And yes, you were the\nPresident. We need\nto talk -- in person.", wikiSplash);
 		}
 
 		private function txt0():void

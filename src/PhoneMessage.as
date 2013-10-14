@@ -12,12 +12,14 @@ package
 		[Embed(source = "../assets/images/phoneWithText.png")] private const phoneBg:Class;
 		private var personName:TextEntity, text:TextEntity;
 		private var phone:Phone;
+		private var _next:Entity;
 
-		public function PhoneMessage(parent:Phone, sender:String, body:String) {
+		public function PhoneMessage(parent:Phone, sender:String, body:String, next:Entity) {
 			graphic = new Image(phoneBg)
 			x = 0;
 			y = 0;
 
+			_next = next;
 			phone = parent;
 			personName = new TextEntity(290, 120, sender, 36, 0xffffff);
 			text = new TextEntity(305, 215, body, 18, 0xffffff);
@@ -25,8 +27,7 @@ package
 
 		override public function update():void
 		{
-			if (Input.released(Key.ESCAPE)) {
-				world.add(phone);
+			if (Input.released(Key.ESCAPE) || Input.released(Key.SPACE)) {
 				world.remove(this);
 			}
 		}
@@ -40,8 +41,8 @@ package
 
 		override public function removed():void
 		{
-			world.add(phone);
-			world.remove (personName);
+			world.add(_next);
+			world.remove(personName);
 			world.remove(text);
 		}
 	}
