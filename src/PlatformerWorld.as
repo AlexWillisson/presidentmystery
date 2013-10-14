@@ -14,19 +14,19 @@ package
 			phone = new Phone();
 			level1 = new Level(mapData);
 
-			// startLevel();
-			openPhone();
+			startLevel();
+			// openPhone();
 		}
 		
 		override public function update():void
 		{
 			if (Input.released(Key.M)) {
-				if (phone.world) {
-					closePhone();
-					startLevel();
-				} else {
+				if (level1.world) {
 					endLevel();
 					openPhone();
+				} else {
+					closePhone();
+					startLevel();
 				}
 			}
 

@@ -9,19 +9,14 @@ package
 		private var sender:TextEntity, time:TextEntity, btn:Button;
 
 		public function Message(posX:int, posY:int, senderName:String,
-			timestamp:String, textColor:uint)
+			timestamp:String, textColor:uint, callback:Function)
 		{
 			Text.font = "UbuntuB";
 
 			sender = new TextEntity(posX, posY, senderName, 22, textColor);
 			time = new TextEntity(posX + 155, posY + 5, timestamp,
 				12, textColor);
-			btn = new Button(pressed, posX - 10, posY, 205, 30);
-		}
-
-		private function pressed():void
-		{
-			trace ("foo");
+			btn = new Button(callback, posX - 10, posY, 205, 30);
 		}
 
 		override public function added():void
