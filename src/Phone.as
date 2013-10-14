@@ -10,7 +10,7 @@ package
 		[Embed(source = "../assets/images/phone.png")] private const phone:Class;
 		private var texts:Array;
 		private var inboxTitle:TextEntity;
-		private var msg:PhoneMessage;
+		private var msg0:PhoneMessage, msg1:PhoneMessage;
 
 		public function Phone() {
 			graphic = new Image(phone)
@@ -18,20 +18,42 @@ package
 			y = 0;
 
 			texts = new Array();
-			texts.push(new Message(300, 170, "VP", "8:38p", UNREAD, vpMsg));
-			texts.push(new Message(300, 200, "Speaker", "4:32p", READ, vpMsg));
-			texts.push(new Message(300, 230, "Mayor", "2:33p", READ, vpMsg));
-			texts.push(new Message(300, 260, "Police", "Tues", READ, vpMsg));
-			texts.push(new Message(300, 290, "Doctor", "Tues", READ, vpMsg));
+			texts[0] = new Message(300, 170, "???", "Now", UNREAD, txt0);
+			// texts.push(new Message(300, 230, "Mayor", "2:33p", READ, vpMsg));
+			// texts.push(new Message(300, 260, "Police", "Tues", READ, vpMsg));
+			// texts.push(new Message(300, 290, "Doctor", "Tues", READ, vpMsg));
 
 			inboxTitle = new TextEntity(290, 120, "Inbox", 36, 0xffffff);
 
-			msg = new PhoneMessage(this, "VP", "Lorem ipsum dolar sit\namet, consectetur");
+			msg0 = new PhoneMessage(this, "???", "It's been a while. If I'm\nright, you're in the\nhospital right now.\nYou need to leave.\n\nNow.");
+			msg1 = new PhoneMessage(this, "???", "And yes, you were the\nPresident. We need\nto talk -- in person.");
 		}
 
-		private function vpMsg():void
+		private function txt0():void
 		{
-			world.add(msg);
+			world.add(msg0);
+			world.remove(texts[0]);
+			texts[0] = new Message(300, 170, "???", "10:33a", READ, txt0r);
+			texts[1] = new Message(300, 200, "???", "Now", UNREAD, txt1);
+			world.remove(this);
+		}
+
+		private function txt0r():void
+		{
+			world.add(msg0);
+			world.remove(this);
+		}
+
+		private function txt1():void
+		{
+			world.add(msg1);
+			texts[1] = (new Message(300, 200, "???", "10:34a", READ, txt1r));
+			world.remove(this);
+		}
+
+		private function txt1r():void
+		{
+			world.add(msg1);
 			world.remove(this);
 		}
 
