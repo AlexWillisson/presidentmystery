@@ -21,7 +21,7 @@ package
 		
 		//Embed Sprite, Set Sprite Map Width, Create Sprite Map, and set Current Animation
 		public const SPRITE_WIDTH:Number = 60;
-		public const SPRITE_HEIGHT:Number = 60;
+		public const SPRITE_HEIGHT:Number = 59;
 		[Embed(source="../assets/images/SpritePres.png")] private const PRESIDENT:Class;
 		public var sprPresident:Spritemap = new Spritemap(PRESIDENT, SPRITE_WIDTH, SPRITE_HEIGHT);
 		public var curAnim:String = "standRight";
