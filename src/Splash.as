@@ -4,7 +4,7 @@ package
 	import net.flashpunk.graphics.Image;
 
 	public class Splash extends Entity {
-		[Embed(source = "assets/images/blank.png")] private const bg:Class;
+		[Embed(source = "../assets/images/blank.png")] private const bg:Class;
 
 		private var text:TextEntity;
 

@@ -7,7 +7,7 @@ package
 		private const READ:uint = 0xffffff;
 		private const UNREAD:uint = 0xf7941e;
 
-		[Embed(source = "assets/images/phone.png")] private const phone:Class;
+		[Embed(source = "../assets/images/phone.png")] private const phone:Class;
 		private var texts:Array, levels:Array;
 		private var inboxTitle:TextEntity;
 		private var msg0:PhoneMessage, msg1:PhoneMessage;

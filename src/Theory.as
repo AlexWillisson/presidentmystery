@@ -6,7 +6,7 @@ package
 	import net.flashpunk.utils.Key;
 
 	public class Theory extends Entity {
-		[Embed(source = "assets/images/blank.png")] private const bg:Class;
+		[Embed(source = "../assets/images/blank.png")] private const bg:Class;
 
 		private var text:TextEntity, ctrls:TextEntity;
 		private var _next:Entity;

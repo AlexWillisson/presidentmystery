@@ -6,7 +6,7 @@ package
 	import net.flashpunk.utils.Key;
 
 	public class WikiPage extends Entity {
-		[Embed(source = "assets/images/wiki.png")] private const page:Class;
+		[Embed(source = "../assets/images/wiki.png")] private const page:Class;
 
 		private var ctrls:TextEntity;
 		private var next:Theory;

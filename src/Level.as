@@ -7,7 +7,7 @@ package
 		private var player:PlayerEntity;
 		private var walls:Array;
 
-		[Embed(source = "assets/images/hospitalBg.png")] private const bg:Class;
+		[Embed(source = "../assets/images/hospitalBg.png")] private const bg:Class;
 
 		public function Level(mapData:Array)
 		{

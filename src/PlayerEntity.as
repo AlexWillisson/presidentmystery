@@ -26,7 +26,7 @@ package
 		
 		private var exit:Boolean = false;
 		
-		[Embed(source = "../assets/images/platformer/SpritePres.png")] private const PLAYER_SPRITE:Class;
+		[Embed(source = "../../assets/images/platformer/SpritePres.png")] private const PLAYER_SPRITE:Class;
 		
 		protected var animatedSprite:Spritemap;
 		public function PlayerEntity() 
