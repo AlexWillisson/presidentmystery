@@ -6,6 +6,7 @@ package
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	
@@ -25,17 +26,24 @@ package
 		
 		private var exit:Boolean = false;
 		
-		[Embed(source="../assets/images/player.png")] private const PLAYER_SPRITE:Class;
+		[Embed(source = "../assets/images/platformer/SpritePres.png")] private const PLAYER_SPRITE:Class;
 		
+		protected var animatedSprite:Spritemap;
 		public function PlayerEntity() 
 		{
 			//Istantializes a lot of stuff, i.e. accel and hitbox.
-			graphic = new Image(PLAYER_SPRITE);
+			animatedSprite = new Spritemap(PLAYER_SPRITE, 60, 60);
+			graphic = animatedSprite;
 			accel = new Point();
 			vel = new Point();
-			setHitbox(27, 35); //NOTE: THIS HAS TO BE UPDATED WITH THE SPRITE!!! THIS IS SET TO SAMUS!!
-			x = 16; //The X and Y the player is created at. Made to be 16/16 so that samus doesn't clip with the
-			y = 16; //		walls upon spawning.
+			setHitbox(28, 55, -13, 2); //Hitbox is set to actual player sprite size. Is offset to behave realistically.
+			x = 50; //The X and Y the player is created at.
+			y = 50;
+			//("animation name", [frames], duration);
+			animatedSprite.add("runningLeft", [0, 1, 2, 3, 4, 5, 6, 7], 25);
+			animatedSprite.add("runningRight", [8, 9, 10, 11, 12, 13, 14, 15], 25);
+			animatedSprite.add("standingRight", [16], 50);
+			animatedSprite.add("standingLeft", [17], 50);
 		}
 
 		override public function update():void
@@ -43,8 +51,9 @@ package
 			var i:int;
 
 			// Checking player input.
-			if(Input.check(Key.LEFT) || Input.check(Key.A)) {accel.x = -PLAYER_HACCEL;} // MOVE LEFT
+			if(Input.check(Key.LEFT) || Input.check(Key.A)) {accel.x = -PLAYER_HACCEL; animatedSprite.play("runningLeft"); } // MOVE LEFT
 			else if (Input.check(Key.RIGHT) || Input.check(Key.D)) {
+				 animatedSprite.play("runningRight");
 				accel.x = PLAYER_HACCEL; // MOVE RIGHT
 				if (x >= 800 && !exit) {
 					exit = true;
@@ -56,13 +65,15 @@ package
 				}
 			}
 			else {	// IF THEY ARE NOT MOVING LEFT OR RIGHT, FACTOR IN DRAG.
-				if(vel.x > 0) { //If the velocity is greater than zero, set the acceleration to drag.
+				if (vel.x > 0) { //If the velocity is greater than zero, set the acceleration to drag.
+					animatedSprite.play("standingRight");
 					accel.x = DRAG;	//		Then, if this ends up with a negative/zero velocity, set it to zero so we don't
 					if ((vel.x + accel.x) <= 0) { vel.x = 0; accel.x = 0; } ;//	end up with oscillation.
 				}
 				if (vel.x < 0) { //Same as above but opposite.
+					animatedSprite.play("standingLeft");
 					accel.x = -DRAG;
-				if ((vel.x + accel.x) >= 0) { vel.x = 0; accel.x = 0; } ;
+					if ((vel.x + accel.x) >= 0) { vel.x = 0; accel.x = 0; } ;
 				}
 			}
 
@@ -89,6 +100,13 @@ package
                 if (! collide("wall",x+FP.sign(vel.x),y)) {
                     x += FP.sign(vel.x);
                 } else {
+					//Forces the player to stand still if they are colliding with a wall.
+					//Otherwise player would keep walking even if they're stuck clipping.
+					if (vel.x > 0) {
+						animatedSprite.play("standingRight");
+					} else { 
+						animatedSprite.play("standingLeft");
+					}
                     vel.x=0;
                     break;
                 }
