@@ -19,7 +19,7 @@ package
 			add(_backbutton);
 			
 			title = new TextEntity(290, 120, "Credits", 36, 0xffffff);
-			credits = new TextEntity(300, 210, "Team:\n -Alex Willison\n -Benjamin Shaibu\n -Laura Shih\n -Polina Shpilker\n -Tyler Laprade\n -Rohan Mahajan", 20, 0xffffff);
+			credits = new TextEntity(300, 210, "Team:\n -Alex Willisson\n -Benjamin Shaibu\n -Laura Shih\n -Polina Shpilker\n -Tyler Laprade\n -Rohan Mahajan", 20, 0xffffff);
 			add(title);
 			add(credits);
 		}
