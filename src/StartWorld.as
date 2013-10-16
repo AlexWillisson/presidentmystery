@@ -43,10 +43,10 @@ package
 				var whichGameInt:int = Math.round(Math.random() * (num_maps - 1));
 				switch(whichGameInt) {
 					case 1:
-						startGame("../assets/maps/Unsaved Level.txt",320,500);
+						startGame("../assets/maps/Hard Level.txt",320,500);
 						break;
 					case 0:
-						startGame("../assets/maps/Unsaved Level.txt",320,500);
+						startGame("../assets/maps/Hard Level.txt",320,500);
 						break;
 				}
         }
