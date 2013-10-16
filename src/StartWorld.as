@@ -24,7 +24,6 @@ package
 		
 		public function StartWorld() 
 		{
-			addGraphic(new Image(SPLASH));
 			addGraphic(new Image(START_TITLE), 0, FP.width / 3 - 15, 20);
 			_playbutton = new Button(preStartGame,FP.width/2,FP.height - 50,120,20);
 			_playbutton.addGraphic(new Image(START_BUTTON));
@@ -41,12 +40,15 @@ package
         public function preStartGame():void {
 				//Generates a random number to choose which map to load. Will have to be changed to include new maps.
 				var whichGameInt:int = Math.round(Math.random() * 1000);
-				switch(whichGameInt % 2) {
+				switch(whichGameInt % 3) {
 					case 0:
 						startGame("../assets/maps/Hard Level.txt",320,500);
 						break;
 					case 1:
-						startGame("../assets/maps/test2.txt",320,500);
+						startGame("../assets/maps/test.txt",52,500);
+						break;
+					case 2:
+						startGame("../assets/maps/test2.txt",52,500);
 						break;
 				}
         }
