@@ -2,18 +2,23 @@ package
 {
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.Sfx;
 
 	public class Level extends Entity {
 		private var player:PlayerEntity;
 		private var walls:Array;
 
 		[Embed(source = "../assets/images/hospitalBg.png")] private const bg:Class;
+		[Embed(source = '../assets/sounds/eerie atmosphere.mp3')] public const MUSIC:Class; // Credit to Jovica on Freesound.org
+		
+		public var sfxMusic:Sfx = new Sfx(MUSIC);
 
 		public function Level(mapData:Array)
 		{
 			var newWall:WallEntity;
 
 			graphic = new Image(bg);
+			sfxMusic.loop();
 
 			player = new PlayerEntity();
 			walls = new Array();

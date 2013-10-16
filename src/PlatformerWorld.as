@@ -22,7 +22,8 @@ package
 
 			// add(splash);
 
-			add(intro);
+			//add(intro);
+			add(levels[0]); // DEBUG PURPOSES ONLY
 
 			// add(level1);
 			// add(phone);
