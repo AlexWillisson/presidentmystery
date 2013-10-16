@@ -145,6 +145,9 @@ package
 				y = FP.screen.height - height;
 			}
 
+			if (exit == true) {
+				FP.world.add(new EndSplash);
+			}
 			// Update parent shit.
 			super.update();
 		}
