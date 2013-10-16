@@ -40,13 +40,13 @@ package
 		
         public function preStartGame():void {
 				//Generates a random number to choose which map to load. Will have to be changed to include new maps.
-				var whichGameInt:int = Math.round(Math.random() * (num_maps - 1));
-				switch(whichGameInt) {
-					case 1:
-						startGame("../assets/maps/Hard Level.txt",320,500);
-						break;
+				var whichGameInt:int = Math.round(Math.random() * 1000);
+				switch(whichGameInt % 2) {
 					case 0:
 						startGame("../assets/maps/Hard Level.txt",320,500);
+						break;
+					case 1:
+						startGame("../assets/maps/test2.txt",320,500);
 						break;
 				}
         }
