@@ -53,10 +53,11 @@ package
 			// Checking player input.
 			if (Input.check(Key.LEFT) || Input.check(Key.A)) {  // MOVE LEFT
 				accel.x = -PLAYER_HACCEL; animatedSprite.play("runningLeft");
-				if (x < 0 && !exit {
+				if (x < 0 && !exit) {
 					exit = true;
 					trace("PLAYER EXITED ON THE LEFT");
 				}
+			}
 			else if (Input.check(Key.RIGHT) || Input.check(Key.D)) {
 				 animatedSprite.play("runningRight");
 				accel.x = PLAYER_HACCEL; // MOVE RIGHT
