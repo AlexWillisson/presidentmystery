@@ -26,6 +26,8 @@ package
 		
 		private var exit:Boolean = false;
 		
+		private var end:EndSplash;
+
 		[Embed(source = "../assets/images/platformer/SpritePres.png")] private const PLAYER_SPRITE:Class;
 		
 		protected var animatedSprite:Spritemap;
@@ -44,11 +46,14 @@ package
 			animatedSprite.add("runningRight", [8, 9, 10, 11, 12, 13, 14, 15], 25);
 			animatedSprite.add("standingRight", [16], 50);
 			animatedSprite.add("standingLeft", [17], 50);
+
+			end = new EndSplash();
 		}
 
 		override public function update():void
 		{
 			var i:int;
+			var all:Array;
 
 			// Checking player input.
 			if (Input.check(Key.LEFT) || Input.check(Key.A)) {  // MOVE LEFT
@@ -64,6 +69,10 @@ package
 				if (x >= 800 && !exit) {
 					exit = true;
 					if (y < 300) {
+						all = new Array();
+						world.getAll(all);
+						world.add(end);
+						world.removeList(all);
 						trace("PLAYER TOOK DIFFICULT PATH");
 					} else {
 						trace("PLAYER TOOK EASY PATH");
