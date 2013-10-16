@@ -13,14 +13,14 @@ package
 		
 		public var sfxMusic:Sfx = new Sfx(MUSIC);
 
-		public function Level(mapData:Array)
+		public function Level(mapData:Array,xStart:int,yStart:int)
 		{
 			var newWall:WallEntity;
 
 			graphic = new Image(bg);
 			sfxMusic.loop();
 
-			player = new PlayerEntity();
+			player = new PlayerEntity(xStart,yStart);
 			walls = new Array();
 
 			//It is given mapdata, and for every row and column it goes through and creates a Wall Entity.

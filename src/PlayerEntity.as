@@ -29,7 +29,7 @@ package
 		[Embed(source = "../assets/images/platformer/SpritePres.png")] private const PLAYER_SPRITE:Class;
 		
 		protected var animatedSprite:Spritemap;
-		public function PlayerEntity() 
+		public function PlayerEntity(xStart: int = 50, yStart: int = 520) 
 		{
 			//Istantializes a lot of stuff, i.e. accel and hitbox.
 			animatedSprite = new Spritemap(PLAYER_SPRITE, 60, 60);
@@ -37,8 +37,8 @@ package
 			accel = new Point();
 			vel = new Point();
 			setHitbox(28, 55, -13, 2); //Hitbox is set to actual player sprite size. Is offset to behave realistically.
-			x = 50; //The X and Y the player is created at.
-			y = 520;
+			x = xStart; //The X and Y the player is created at.
+			y = yStart;
 			//("animation name", [frames], duration);
 			animatedSprite.add("runningLeft", [0, 1, 2, 3, 4, 5, 6, 7], 25);
 			animatedSprite.add("runningRight", [8, 9, 10, 11, 12, 13, 14, 15], 25);

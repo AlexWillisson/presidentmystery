@@ -43,15 +43,15 @@ package
 				var whichGameInt:int = Math.round(Math.random() * (num_maps - 1));
 				switch(whichGameInt) {
 					case 1:
-						startGame("../assets/maps/test.txt");
+						startGame("../assets/maps/Unsaved Level.txt",320,500);
 						break;
 					case 0:
-						startGame("../assets/maps/test2.txt");
+						startGame("../assets/maps/Unsaved Level.txt",320,500);
 						break;
 				}
         }
 		
-		public function startGame(mapURL:String):void 
+		public function startGame(mapURL:String,xStart:int,yStart:int):void 
 		{
 			var request:URLRequest = new URLRequest(mapURL);
 			var loader:URLLoader = new URLLoader(); 
@@ -104,7 +104,7 @@ package
 					}
 				}
 				var all_data:Array = [map_width, map_height, tile_width, tile_height, tileset_url, new_layerdata];
-				FP.world = new PlatformerWorld(all_data);
+				FP.world = new PlatformerWorld(all_data,xStart,yStart);
 			}
 			//This actually causes the load, which when done calls the above weird-ass function.
 			loader.load(request); 

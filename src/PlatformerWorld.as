@@ -11,10 +11,10 @@ package
 		private var splash:Splash;
 		private var intro:Intro;
 
-		public function PlatformerWorld(mapData:Array) 
+		public function PlatformerWorld(mapData:Array,xStart:int,yStart:int) 
 		{
 			levels = new Array();
-			levels[0] = new Level(mapData);
+			levels[0] = new Level(mapData,xStart,yStart);
 			splash = new Splash();
 			intro = new Intro(loadPhone);
 
@@ -23,7 +23,7 @@ package
 			// add(splash);
 
 			add(intro);
-			// add(levels[0]); // DEBUG PURPOSES ONLY
+			//add(levels[0]); // DEBUG PURPOSES ONLY
 
 			// add(level1);
 			// add(phone);
