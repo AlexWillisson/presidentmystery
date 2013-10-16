@@ -9,7 +9,7 @@ package
 		private var walls:Array;
 
 		[Embed(source = "../assets/images/hospitalBg.png")] private const bg:Class;
-		[Embed(source = '../assets/sounds/eerie atmosphere.mp3')] public const MUSIC:Class;
+		[Embed(source = '../assets/sounds/eerie atmosphere.mp3')] public const MUSIC:Class; // Credit to Jovica on Freesound.org
 		
 		public var sfxMusic:Sfx = new Sfx(MUSIC);
 
