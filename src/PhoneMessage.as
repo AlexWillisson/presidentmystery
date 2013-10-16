@@ -10,7 +10,9 @@ package
 		private const UNREAD:uint = 0xf7941e;
 
 		[Embed(source = "../assets/images/phoneWithText.png")] private const phoneBg:Class;
+		[Embed(source = "../assets/images/backbtn.png")] private const btnImg:Class;
 		private var personName:TextEntity, text:TextEntity;
+		private var backBtn:Button;
 		private var phone:Phone;
 		private var _next:Entity;
 
@@ -23,6 +25,12 @@ package
 			phone = parent;
 			personName = new TextEntity(290, 120, sender, 36, 0xffffff);
 			text = new TextEntity(305, 215, body, 18, 0xffffff);
+			backBtn = new Button(back, 380, 450, 37, 36, btnImg);
+		}
+
+		private function back():void
+		{
+			world.remove(this);
 		}
 
 		override public function update():void
@@ -36,6 +44,7 @@ package
 		{
 			world.add(personName);
 			world.add(text);
+			world.add(backBtn);
 			world.remove(phone);
 		}
 
@@ -44,6 +53,7 @@ package
 			world.add(_next);
 			world.remove(personName);
 			world.remove(text);
+			world.remove(backBtn);
 		}
 	}
 }
