@@ -24,6 +24,7 @@ package
 		
 		public function StartWorld() 
 		{
+			addGraphic(new Image(SPLASH));
 			addGraphic(new Image(START_TITLE), 0, FP.width / 3 - 15, 20);
 			_playbutton = new Button(preStartGame,FP.width/2,FP.height - 50,120,20);
 			_playbutton.addGraphic(new Image(START_BUTTON));
